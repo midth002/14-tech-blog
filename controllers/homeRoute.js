@@ -2,10 +2,11 @@ const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 const auth = require('../utils/auth'); 
 
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         res.render('home', {
-
+            user_id: req.session.user_id,
+            logged_in: req.session.logged_in
         })
     } catch (err) {
         console.log(err); 
