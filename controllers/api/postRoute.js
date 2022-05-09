@@ -5,9 +5,20 @@ const { User, Post, Comment } = require('../../models');
 
 router.get('/', async (req, res) => {
     try{
-        const postedData = await Post.findAll()
+        const postedData = await Post.findAll({
+            include: [
+                {
+                model: Comment,
+                include: [
+                    {
+                        model: User
+                    }
+                ]
+            }
+        ]
+        })
             const posts = postedData.map((post) => post.get({ plain: true }));
-            // res.render('home', { posts });
+           
             res.status(200).json({ posts });
 
     }catch (err) {
@@ -54,19 +65,6 @@ router.post('/', async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
-})
-
-// router.post('/:id', async (req, res) => {
-//     try {
-//         const post = await Comments.create({
-//             ...req.body,
-//             post_id: req.params.id,
-//             user_id: req.session.user_id
-//         });
-//         res.status(200).json({message})
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// })
+});
 
 module.exports = router;
