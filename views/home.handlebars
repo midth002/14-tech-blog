@@ -16,10 +16,11 @@
                     <a class="navbar-item is-active">
                             Home
                         </a>
-                    <a class="navbar-item">
+                    {{#if logged_in}}
+                    <a class="navbar-item" href="./dashboard">
                             Dashboard
                         </a>
-                    {{#if logged_in}}
+                    
                     <a class="navbar-item" id="logout">
                            Logout
                         </a>
