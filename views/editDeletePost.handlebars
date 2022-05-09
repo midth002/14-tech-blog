@@ -55,16 +55,16 @@
                            <div class="m-2">
                                <h4 class="has-text-weight-semibold">Title</h4>
                            </div>
-                            <input type="text" class="input is-info" value={{editPost.title}}>
+                            <input type="text" class="input is-info" id="title-input"value={{editPost.title}}>
                                 <div class="m-2">
                                <h4 class="has-text-weight-semibold">Content</h4>
                            </div>
-                            <textarea class="textarea is-info">{{editPost.contents}}</textarea>
+                            <textarea class="textarea is-info" id="content-textarea">{{editPost.contents}}</textarea>
                         </div>
                      
 
                             <div class="update-delete-btns has-text-right mt-5">
-                                <button class="button is-info">Update</button>
+                                <button class="button is-info" id="update-post" >Update</button>
                                 <button class="button is-danger" id="delete-post">Delete</button>
                             </div>
                         </div>
@@ -107,4 +107,7 @@
     </div>
   </div>     
 
+ <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="/js/modal.js"></script>
+<script src="/js/editPost.js"></script>
+<script src="/js/deletePost.js"></script>

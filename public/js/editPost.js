@@ -1,17 +1,19 @@
-const deletePost = async (e) => {
+const editPost = async (e) => {
+    const contents = $('#content-textarea');
+    const title = $('#title-input');
+
     e.preventDefault(); 
     const response = await fetch(`api/post/${id}`, {
-        method: 'DELETE'
+        method: 'PUT', 
+        body: JSON.stringify({ title, contents})
     });
 
     if (response.ok) {
-        alert('Post Deleted')
+        alert('Post Updated')
         document.location.replace('/dashboard');
     } else {
-        alert("Something went wrong. Can't delete post")
+        alert("Something went wrong. Can't Update post");
     }
 }
 
-
-
-$('#delete-post').click(deletePost);
+$('#update-post').click(editPost);
