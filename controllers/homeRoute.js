@@ -4,8 +4,12 @@ const auth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
+
+      const postedData = await Post.findAll()
+      const posts = postedData.map((post) => post.get({ plain: true }));
+
         res.render('home', {
-            user_id: req.session.user_id,
+            posts,
             logged_in: req.session.logged_in
         })
     } catch (err) {
