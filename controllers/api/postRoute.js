@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const { User, Post, Comments } = require('../../models');
+const { User, Post, Comment } = require('../../models');
 
 
 router.get('/', async (req, res) => {
@@ -18,14 +18,14 @@ router.get('/', async (req, res) => {
 
 
 
-//get the specific message with all of its comments.
+//get the specific post with all of its comments.
 router.get('/:id', async (req, res) => {
     try {
-        console.log("WORKING>>>");
-        const message = await Post.findByPk(req.params.id, {
+        
+        const post = await Post.findByPk(req.params.id, {
             include: [
                 {
-                model: Comments,
+                model: Comment,
                 include: [
                     {
                         model: User
@@ -34,9 +34,8 @@ router.get('/:id', async (req, res) => {
             }
         ]
         });
-        const singlePost = message.get({ plain: true });
-        console.log(singlePost)
-            res.render('singleposts', { singlePost });
+        const singlePost = post.get({ plain: true });
+            res.status(200).json({singlePost})
         } catch (err) {
             console.error(err);
             res.status(400).json(err);
