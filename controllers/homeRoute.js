@@ -65,7 +65,7 @@ router.get('/post/:id', async (req, res) => {
       
         res.render('post', {
           singlePost,
-         
+          logged_in: req.session.logged_in, 
         })
       } catch (err) {
           console.error(err);
