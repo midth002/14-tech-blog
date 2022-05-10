@@ -61,7 +61,7 @@ router.post('/', async (req, res) => {
             contents: req.body.contents,
             user_id: req.session.user_id 
         });
-        res.status(200).json({post, message : `Post Createcd`})
+        res.status(200).json({post, message : `Post Created`})
     } catch (err) {
         res.status(500).json(err);
     }

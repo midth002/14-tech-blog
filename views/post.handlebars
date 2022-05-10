@@ -51,7 +51,7 @@
                             <div class="has-text-right">
                              <h4 class="has-text-weight-semibold">Posted by {{user.user_name}} on {{formDate singlePost.createdAt}}</h4>
                              </div>
-                           <h3><a href="./post/{{singlePost.id}}">{{singlePost.title}}</a></h3> 
+                           <h3><a href="./post/{{singlePost.id}}" >{{singlePost.title}}</a></h3> 
                           
                         </div>
                         <div>
@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="mt-5 has-text-centered">
-                        <button class="button is-info js-modal-trigger" data-target="comment-modal" >Add Comment</button>
+                        <button class="button is-info js-modal-trigger" data-target="comment-modal" data-id="{{singlePost.id}}" >Add Comment</button>
                         </div>
 
                         {{#each singlePost.comments as |comments| }}
@@ -86,7 +86,7 @@
     <div class="box">
     
       <!-- Your content -->
-      <textarea class="textarea is-info" placeholder="Add a comment" id="comment-textarea"></textarea>
+      <input class="input is-info" placeholder="Add a comment" id="comment"></input>
       <div class="has-text-right">
         <button class="button is-primary mt-5" id="add-comment">Add Comment</button>
       </div>
