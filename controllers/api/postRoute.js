@@ -61,7 +61,7 @@ router.post('/', async (req, res) => {
             contents: req.body.contents,
             user_id: req.session.user_id 
         });
-        res.status(200).json({post, message : `Post Created`})
+        res.status(200).json({post, message : `Post Createcd`})
     } catch (err) {
         res.status(500).json(err);
     }
@@ -69,23 +69,12 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
-        const updatePost = await Post.update({
-            title : req.body.title,
-            contents : req.body.contents
-        },
-            {
+        const updatePost = await Post.update(req.body, {
+            
             where : {
                 id: req.params.id
-            },   include: [
-                {
-                model: Comment,
-                include: [
-                    {
-                        model: User
-                    }
-                ]
             }
-        ]
+        
         }); 
 
         res.status(200).json(updatePost);

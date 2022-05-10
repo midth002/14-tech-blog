@@ -1,11 +1,15 @@
 const editPost = async (e) => {
-    const contents = $('#content-textarea');
-    const title = $('#title-input');
-
     e.preventDefault(); 
-    const response = await fetch(`api/post/${id}`, {
+    const urlString = window.location.toString().split('/')
+    const postId  = urlString[4];
+  
+    const contents = $('#content-textarea').val();
+    const title = $('#title-input').val();
+
+    const response = await fetch(`/api/post/${postId}`, {
         method: 'PUT', 
-        body: JSON.stringify({ title, contents})
+        body: JSON.stringify({ title, contents }),
+        headers: { 'Content-Type': 'application/json' }
     });
 
     if (response.ok) {
