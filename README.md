@@ -2,7 +2,7 @@
 
    [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-   [Live-link](https://cryptic-brook-43077.herokuapp.com/)
+   [Live-link](https://mvc-avm-tech-blog-post.herokuapp.com/)
   
   ## Table of Contents 
 
